@@ -1,0 +1,62 @@
+{
+  "name": "GooglePlaceSearchWithMap",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "start": "react-native start",
+    "test": "jest",
+    "icons": "cd scripts && node icons.js",
+    "images": "cd scripts && node images.js",
+    "screens": "cd scripts && node generateScreenFile.js",
+    "svgs": "cd scripts && node svgIcons.js"
+  },
+  "dependencies": {
+    "@appandflow/react-native-google-autocomplete": "^2.1.0",
+    "@gorhom/bottom-sheet": "5",
+    "@react-navigation/native": "^7.1.14",
+    "@react-navigation/native-stack": "^7.3.21",
+    "@reduxjs/toolkit": "^2.8.2",
+    "react": "19.1.0",
+    "react-native": "0.80.1",
+    "react-native-gesture-handler": "^2.27.1",
+    "react-native-get-random-values": "^1.11.0",
+    "react-native-maps": "^1.24.3",
+    "react-native-mmkv": "^3.3.0",
+    "react-native-ratings": "^8.1.0",
+    "react-native-reanimated": "^3.18.0",
+    "react-native-safe-area-context": "^5.5.1",
+    "react-native-screens": "^4.11.1",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "19.0.0",
+    "@react-native-community/cli-platform-android": "19.0.0",
+    "@react-native-community/cli-platform-ios": "19.0.0",
+    "@react-native/babel-preset": "0.80.1",
+    "@react-native/eslint-config": "0.80.1",
+    "@react-native/metro-config": "0.80.1",
+    "@react-native/typescript-config": "0.80.1",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.1.0",
+    "@types/react-test-renderer": "^19.1.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-native-dotenv": "^3.4.11",
+    "react-test-renderer": "19.1.0",
+    "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
