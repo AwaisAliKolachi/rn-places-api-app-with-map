@@ -82,6 +82,7 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
           renderItem={renderItem}
           ListHeaderComponent={renderListHeader}
+          keyboardShouldPersistTaps="handled"
         />
       </View>
     </BaseLayout>

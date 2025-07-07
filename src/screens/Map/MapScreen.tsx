@@ -7,7 +7,7 @@ import {
   PlaceDetailsSection,
   RecenterMapButton,
 } from '../../components';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Icons } from '../../assets/icons';
 import { logger, screenWidth } from '../../utils';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -28,7 +28,7 @@ const MapScreen = () => {
     <GestureHandlerRootView style={styles.container}>
       <MapView
         ref={mapRef}
-        provider="google"
+        provider={PROVIDER_GOOGLE}
         showsUserLocation={false}
         style={styles.map}
         initialRegion={initialRegion}
