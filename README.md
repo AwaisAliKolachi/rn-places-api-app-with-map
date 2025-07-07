@@ -45,7 +45,7 @@ You need to replace placeholder values of `YOUR_API_KEY` in several files.
    Example:
 
    ```env
-   GOOGLE_API_KEY=YOUR_API_KEY
+   API_KEY=YOUR_API_KEY
    ```
 
 2. **Android:**
@@ -58,11 +58,13 @@ You need to replace placeholder values of `YOUR_API_KEY` in several files.
      ```
    - `android/app/src/main/res/values/google_maps_api.xml`
      ```xml
-     <string name="google_maps_key">YOUR_API_KEY</string>
+     <resources>
+        <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">YOUR_API_KEY</string>
+     </resources>
      ```
 
 3. **iOS:**
-   - `ios/RNPlacesApiApp/AppDelegate.swift` _(Replace with actual app name if different)_
+   - `ios\GooglePlaceSearchWithMap\AppDelegate.swift`
      ```swift
      GMSServices.provideAPIKey("YOUR_API_KEY")
      ```
