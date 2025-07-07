@@ -37,8 +37,8 @@ This is a **React Native** app using Google Maps and Places APIs for searching a
 ### 1. Clone the repository
 
 ```sh
-git clone https://github.com/AwaisAliKolachi/rn-places-api-app.git
-cd rn-places-api-app
+git clone https://github.com/AwaisAliKolachi/rn-places-api-app-with-map.git
+cd rn-places-api-app-with-map
 ```
 
 ### 2. Install dependencies
