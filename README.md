@@ -26,6 +26,8 @@ This is a **React Native** app using Google Maps and Places APIs for searching a
   - Allows users to re-select a previously searched location
   - Automatically **navigates and highlights** the location on the map
 
+---
+
 > ⚠️ Make sure you've completed the [React Native Environment Setup](https://reactnative.dev/docs/environment-setup) before proceeding.
 
 ---
