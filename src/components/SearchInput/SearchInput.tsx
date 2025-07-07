@@ -42,6 +42,9 @@ export const SearchInput = React.memo(
           placeholder="Type here to find a place..."
           placeholderTextColor={color.textPlaceholer}
           style={styles.searchInput}
+          autoComplete="off"
+          autoCorrect={false}
+          spellCheck={false}
         />
         {term.length > 0 && (
           <TouchableOpacity
@@ -62,7 +65,7 @@ export const SearchInput = React.memo(
   }
 );
 
-export const SearchInputStyles = ({ primaryColor, textLight }: Palette) =>
+export const SearchInputStyles = ({}: Palette) =>
   StyleSheet.create({
     searchInputContainer: {
       flexDirection: 'row',
