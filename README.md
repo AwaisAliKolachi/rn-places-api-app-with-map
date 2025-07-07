@@ -2,6 +2,30 @@
 
 This is a **React Native** app using Google Maps and Places APIs for searching and displaying location information. It supports both **Android** and **iOS** platforms.
 
+## ✨ Features
+
+- 🔍 **Places Search**
+
+  - Responsive search using the **Google Places API**
+  - Provides real-time **autocomplete suggestions** as the user types
+
+- 🗺️ **Display on Map**
+
+  - Displays the selected place on a **Google Map**
+  - Shows place **Name and Address**
+  - Shows place **Ratings and Reviews**
+
+- 🧠 **Search History with MMKV + Redux Toolkit**
+
+  - Keeps a record of all searched places
+  - Displays history in a list format
+  - **Persists data locally** using [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) for high-performance storage
+  - Uses [`@reduxjs/toolkit`](https://redux-toolkit.js.org/) for centralized state management
+
+- ♻️ **Select from History**
+  - Allows users to re-select a previously searched location
+  - Automatically **navigates and highlights** the location on the map
+
 > ⚠️ Make sure you've completed the [React Native Environment Setup](https://reactnative.dev/docs/environment-setup) before proceeding.
 
 ---
