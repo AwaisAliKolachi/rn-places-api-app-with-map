@@ -8,7 +8,7 @@ export type BaseLayoutProps = React.PropsWithChildren & {
   style?: StyleProp<ViewStyle>;
 };
 
-export const BaseLayout = React.memo(({ children, style }: BaseLayoutProps) => {
+export const BaseLayout = ({ children, style }: BaseLayoutProps) => {
   const { appTheme, color } = useColor();
   const styles = baseLayoutStyles(color);
 
@@ -23,7 +23,7 @@ export const BaseLayout = React.memo(({ children, style }: BaseLayoutProps) => {
       </SafeAreaView>
     </SafeAreaProvider>
   );
-});
+};
 
 export const baseLayoutStyles = ({ backgroundColor }: Palette) =>
   StyleSheet.create({

@@ -10,44 +10,46 @@ export type SearchPredictionsListProps = React.PropsWithChildren & {
   onSelectPrediction: (el: GoogleLocationResult) => void;
 };
 
-export const SearchPredictionsList = React.memo(
-  ({ locationResults, onSelectPrediction }: SearchPredictionsListProps) => {
-    const { color } = useAppContext();
-    const styles = SearchPredictionsListStyles(color);
+export const SearchPredictionsList = ({
+  locationResults,
+  onSelectPrediction,
+}: SearchPredictionsListProps) => {
+  const { color } = useAppContext();
+  const styles = SearchPredictionsListStyles(color);
 
-    if (locationResults.length === 0) return <></>;
+  if (locationResults.length === 0) return <></>;
 
-    return (
-      <View style={styles.suggestionsContainer}>
-        {locationResults.slice(0, 5).map((el: GoogleLocationResult, i) => (
-          <TouchableOpacity
-            key={String(i)}
-            onPress={() => onSelectPrediction(el)}
-            style={styles.suggestionItem}>
-            <Image
-              source={Icons.LOCATION_MAP}
-              style={styles.locationPin}
-              resizeMode="contain"
-            />
-            <View style={{ flex: 1 }}>
-              <Text style={styles.suggestionMain}>
-                {el.structured_formatting.main_text}
-              </Text>
-              <Text style={styles.suggestionSecondary}>
-                {el.structured_formatting.secondary_text}
-              </Text>
-            </View>
-            <Image
-              source={Icons.GO_ICON}
-              style={styles.locationPin}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  }
-);
+  return (
+    <View style={styles.suggestionsContainer}>
+      {locationResults.slice(0, 5).map((el: GoogleLocationResult, i) => (
+        <TouchableOpacity
+          key={String(i)}
+          onPress={() => onSelectPrediction(el)}
+          style={styles.suggestionItem}
+        >
+          <Image
+            source={Icons.LOCATION_MAP}
+            style={styles.locationPin}
+            resizeMode="contain"
+          />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.suggestionMain}>
+              {el.structured_formatting.main_text}
+            </Text>
+            <Text style={styles.suggestionSecondary}>
+              {el.structured_formatting.secondary_text}
+            </Text>
+          </View>
+          <Image
+            source={Icons.GO_ICON}
+            style={styles.locationPin}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
 
 export const SearchPredictionsListStyles = ({}: Palette) =>
   StyleSheet.create({

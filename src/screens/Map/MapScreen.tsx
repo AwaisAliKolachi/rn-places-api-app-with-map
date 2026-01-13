@@ -32,14 +32,16 @@ const MapScreen = () => {
         showsUserLocation={false}
         style={styles.map}
         initialRegion={initialRegion}
-        mapType={mapType}>
+        mapType={mapType}
+      >
         <Marker coordinate={initialRegion} title={place.name} />
       </MapView>
       <TouchableOpacity
         activeOpacity={0.5}
         onPress={() => navigation.goBack()}
         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        style={styles.backButtonContainer}>
+        style={styles.backButtonContainer}
+      >
         <Image
           source={Icons.LEFT_ARROW_CIRCLE_WHITE}
           style={styles.backButtonIcon}
@@ -53,4 +55,4 @@ const MapScreen = () => {
   );
 };
 
-export default React.memo(MapScreen);
+export default MapScreen;

@@ -28,80 +28,77 @@ export type PlaceDetailsSectionProps = {
   } & GoogleLocationDetailResult;
 };
 
-export const PlaceDetailsSection = React.memo(
-  ({ place }: PlaceDetailsSectionProps) => {
-    const { color } = useAppContext();
-    const styles = PlaceDetailsSectionStyles(color);
+export const PlaceDetailsSection = ({ place }: PlaceDetailsSectionProps) => {
+  const { color } = useAppContext();
+  const styles = PlaceDetailsSectionStyles(color);
 
-    const sheetRef = useRef<BottomSheet>(null);
-    const snapPoints = useMemo(() => ['10%', '30%', '60%', '96%'], []);
+  const sheetRef = useRef<BottomSheet>(null);
+  const snapPoints = useMemo(() => ['10%', '30%', '60%', '96%'], []);
 
-    return (
-      <BottomSheet
-        ref={sheetRef}
-        index={1}
-        snapPoints={snapPoints}
-        enableDynamicSizing={false}
-        enableOverDrag={false}
-        handleIndicatorStyle={styles.handleIndicator}>
-        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-          <View style={styles.titleContainer}>
-            <View style={styles.titleRow}>
-              <Text style={styles.title}>{place.name}</Text>
-              {place.rating && (
-                <Text style={styles.ratingText}>
-                  ⭐{place?.rating} ({place?.user_ratings_total})
-                </Text>
-              )}
-            </View>
-            <Text style={styles.subtitle}>{place.formatted_address}</Text>
-          </View>
-
-          {place.editorial_summary?.overview && (
-            <View style={styles.descriptionContainer}>
-              <Text style={styles.description}>
-                {place.editorial_summary?.overview}
+  return (
+    <BottomSheet
+      ref={sheetRef}
+      index={1}
+      snapPoints={snapPoints}
+      enableDynamicSizing={false}
+      enableOverDrag={false}
+      handleIndicatorStyle={styles.handleIndicator}
+    >
+      <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.titleContainer}>
+          <View style={styles.titleRow}>
+            <Text style={styles.title}>{place.name}</Text>
+            {place.rating && (
+              <Text style={styles.ratingText}>
+                ⭐{place?.rating} ({place?.user_ratings_total})
               </Text>
-            </View>
-          )}
+            )}
+          </View>
+          <Text style={styles.subtitle}>{place.formatted_address}</Text>
+        </View>
 
-          {place?.reviews && place?.reviews?.length > 0 && (
-            <View style={styles.reviewsContainer}>
-              <Text style={styles.reviewHeading}>User Reviews</Text>
-              {place.reviews.slice(0, 5).map((review, index) => (
-                <View key={index} style={styles.reviewItem}>
-                  <View style={styles.reviewHeader}>
-                    <Image
-                      source={{ uri: review.profile_photo_url }}
-                      style={styles.profilePhoto}
-                      resizeMode="contain"
-                    />
-                    <View style={styles.reviewInfo}>
-                      <Text style={styles.authorName}>
-                        {review.author_name}
-                      </Text>
-                      <Text style={styles.timeText}>
-                        {review.relative_time_description}
-                      </Text>
-                    </View>
-                  </View>
-                  <Rating
-                    ratingCount={5}
-                    startingValue={review.rating}
-                    imageSize={18}
-                    readonly
-                    style={{ alignSelf: 'flex-start' }}
+        {place.editorial_summary?.overview && (
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.description}>
+              {place.editorial_summary?.overview}
+            </Text>
+          </View>
+        )}
+
+        {place?.reviews && place?.reviews?.length > 0 && (
+          <View style={styles.reviewsContainer}>
+            <Text style={styles.reviewHeading}>User Reviews</Text>
+            {place.reviews.slice(0, 5).map((review, index) => (
+              <View key={index} style={styles.reviewItem}>
+                <View style={styles.reviewHeader}>
+                  <Image
+                    source={{ uri: review.profile_photo_url }}
+                    style={styles.profilePhoto}
+                    resizeMode="contain"
                   />
-                  <Text style={styles.reviewText}>{review.text}</Text>
+                  <View style={styles.reviewInfo}>
+                    <Text style={styles.authorName}>{review.author_name}</Text>
+                    <Text style={styles.timeText}>
+                      {review.relative_time_description}
+                    </Text>
+                  </View>
                 </View>
-              ))}
-            </View>
-          )}
-        </BottomSheetScrollView>
-      </BottomSheet>
-    );
-  }
-);
+                <Rating
+                  ratingCount={5}
+                  startingValue={review.rating}
+                  imageSize={18}
+                  readonly
+                  style={{ alignSelf: 'flex-start' }}
+                />
+                <Text style={styles.reviewText}>{review.text}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </BottomSheetScrollView>
+    </BottomSheet>
+  );
+};
 
 export const PlaceDetailsSectionStyles = ({}: Palette) =>
   StyleSheet.create({

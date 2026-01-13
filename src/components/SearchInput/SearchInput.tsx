@@ -18,52 +18,56 @@ export type SearchInputProps = React.PropsWithChildren & {
   clearSearch: () => void;
 };
 
-export const SearchInput = React.memo(
-  ({ isSearching = false, term, setTerm, clearSearch }: SearchInputProps) => {
-    const { color } = useAppContext();
-    const styles = SearchInputStyles(color);
+export const SearchInput = ({
+  isSearching = false,
+  term,
+  setTerm,
+  clearSearch,
+}: SearchInputProps) => {
+  const { color } = useAppContext();
+  const styles = SearchInputStyles(color);
 
-    return (
-      <View style={styles.searchInputContainer}>
-        {isSearching ? (
-          <View style={{ paddingRight: 12 }}>
-            <ActivityIndicator size="small" color={color.primaryColor} />
-          </View>
-        ) : (
+  return (
+    <View style={styles.searchInputContainer}>
+      {isSearching ? (
+        <View style={{ paddingRight: 12 }}>
+          <ActivityIndicator size="small" color={color.primaryColor} />
+        </View>
+      ) : (
+        <Image
+          source={Icons.SEARCH_ICON}
+          style={styles.locationPin}
+          resizeMode="contain"
+        />
+      )}
+      <TextInput
+        value={term}
+        onChangeText={setTerm}
+        placeholder="Type here to find a place..."
+        placeholderTextColor={color.textPlaceholer}
+        style={styles.searchInput}
+        autoComplete="off"
+        autoCorrect={false}
+        spellCheck={false}
+      />
+      {term.length > 0 && (
+        <TouchableOpacity
+          onPress={() => {
+            setTerm('');
+            clearSearch();
+          }}
+          hitSlop={{ top: 20, bottom: 20, left: 5, right: 30 }}
+        >
           <Image
-            source={Icons.SEARCH_ICON}
-            style={styles.locationPin}
+            source={Icons.CROSS_ICON}
+            style={styles.clearIcon}
             resizeMode="contain"
           />
-        )}
-        <TextInput
-          value={term}
-          onChangeText={setTerm}
-          placeholder="Type here to find a place..."
-          placeholderTextColor={color.textPlaceholer}
-          style={styles.searchInput}
-          autoComplete="off"
-          autoCorrect={false}
-          spellCheck={false}
-        />
-        {term.length > 0 && (
-          <TouchableOpacity
-            onPress={() => {
-              setTerm('');
-              clearSearch();
-            }}
-            hitSlop={{ top: 20, bottom: 20, left: 5, right: 30 }}>
-            <Image
-              source={Icons.CROSS_ICON}
-              style={styles.clearIcon}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        )}
-      </View>
-    );
-  }
-);
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
 
 export const SearchInputStyles = ({}: Palette) =>
   StyleSheet.create({
