@@ -11,41 +11,41 @@ export type MapTypeSwitchProps = {
   setMapType: React.Dispatch<React.SetStateAction<MapType>>;
 };
 
-export const MapTypeSwitch = React.memo(
-  ({ mapType, setMapType }: MapTypeSwitchProps) => {
-    const { color } = useAppContext();
-    const styles = MapTypeSwitchStyles(color);
+export const MapTypeSwitch = ({ mapType, setMapType }: MapTypeSwitchProps) => {
+  const { color } = useAppContext();
+  const styles = MapTypeSwitchStyles(color);
 
-    const isSatellite = mapType === 'satellite';
-    const isStandard = mapType === 'standard';
+  const isSatellite = mapType === 'satellite';
+  const isStandard = mapType === 'standard';
 
-    return (
-      <View style={styles.wrapper}>
-        <View style={styles.buttonGroup}>
-          <TouchableOpacity
-            onPress={() => setMapType('standard')}
-            style={[styles.mapButton, isStandard && styles.activeMapButton]}>
-            <Image
-              source={Icons.TYPE_MAP}
-              style={styles.icon}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.buttonGroup}>
+        <TouchableOpacity
+          onPress={() => setMapType('standard')}
+          style={[styles.mapButton, isStandard && styles.activeMapButton]}
+        >
+          <Image
+            source={Icons.TYPE_MAP}
+            style={styles.icon}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => setMapType('satellite')}
-            style={[styles.mapButton, isSatellite && styles.activeMapButton]}>
-            <Image
-              source={Icons.TYPE_SATELLITE}
-              style={styles.icon}
-              resizeMode="cover"
-            />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          onPress={() => setMapType('satellite')}
+          style={[styles.mapButton, isSatellite && styles.activeMapButton]}
+        >
+          <Image
+            source={Icons.TYPE_SATELLITE}
+            style={styles.icon}
+            resizeMode="cover"
+          />
+        </TouchableOpacity>
       </View>
-    );
-  }
-);
+    </View>
+  );
+};
 
 const MapTypeSwitchStyles = (color: Palette) =>
   StyleSheet.create({

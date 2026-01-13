@@ -1,11 +1,11 @@
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import { Storage as ReduxStorage } from 'redux-persist';
 import { logger } from '../utils';
 import { STORAGES_KEY } from '../constants';
 
 export type dataStoreType = 'string' | 'boolean' | 'number' | 'object';
 
-export const storageMmkv = new MMKV();
+export const storageMmkv = createMMKV();
 
 export const getData = (key: STORAGES_KEY, _type?: dataStoreType) => {
   try {
@@ -40,7 +40,7 @@ export const getStorageKey = () => {
 };
 
 export const deleteStorage = (key: STORAGES_KEY) => {
-  return storageMmkv.delete(key);
+  return storageMmkv.remove(key);
 };
 
 export const storage = {
@@ -56,7 +56,7 @@ export const reduxStorage: ReduxStorage = {
     return Promise.resolve(value);
   },
   removeItem: key => {
-    storageMmkv.delete(key);
+    storageMmkv.remove(key);
     return Promise.resolve();
   },
   setItem: (key, value) => {

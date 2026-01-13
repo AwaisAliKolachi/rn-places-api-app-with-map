@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import useHome from './useHome';
 import {
   BaseLayout,
@@ -89,4 +89,4 @@ const HomeScreen = () => {
   );
 };
 
-export default React.memo(HomeScreen);
+export default HomeScreen;
