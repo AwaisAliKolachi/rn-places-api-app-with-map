@@ -30,7 +30,7 @@ export const SearchInput = ({
   return (
     <View style={styles.searchInputContainer}>
       {isSearching ? (
-        <View style={{ paddingRight: 12 }}>
+        <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color={color.primaryColor} />
         </View>
       ) : (
@@ -103,5 +103,8 @@ export const SearchInputStyles = ({}: Palette) =>
       width: 22,
       height: 22,
       marginRight: 10,
+    },
+    loadingContainer: {
+      paddingRight: 12,
     },
   });

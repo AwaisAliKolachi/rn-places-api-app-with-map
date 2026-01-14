@@ -24,8 +24,9 @@ export const SearchHistoryItem = React.memo(
           resizeMode="contain"
         />
         <TouchableOpacity
-          style={{ flex: 1 }}
-          onPress={() => onPressHistoryItem(item)}>
+          style={styles.historyItemContent}
+          onPress={() => onPressHistoryItem(item)}
+        >
           <Text style={styles.historyText}>{item.name}</Text>
           <Text style={styles.subtitleText}>{item.formatted_address}</Text>
         </TouchableOpacity>
@@ -50,6 +51,9 @@ export const SearchHistoryItemStyles = ({ primaryColor, textLight }: Palette) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+    },
+    historyItemContent: {
+      flex: 1,
     },
     historyText: {
       fontSize: 16,

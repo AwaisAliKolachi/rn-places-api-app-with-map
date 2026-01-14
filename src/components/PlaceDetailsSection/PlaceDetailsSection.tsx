@@ -35,6 +35,34 @@ export const PlaceDetailsSection = ({ place }: PlaceDetailsSectionProps) => {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['10%', '30%', '60%', '96%'], []);
 
+  const renderReiewList = (reviews: GooglePlaceReview[]) => {
+    return reviews.slice(0, 5).map((review, index) => (
+      <View key={index} style={styles.reviewItem}>
+        <View style={styles.reviewHeader}>
+          <Image
+            source={{ uri: review.profile_photo_url }}
+            style={styles.profilePhoto}
+            resizeMode="contain"
+          />
+          <View style={styles.reviewInfo}>
+            <Text style={styles.authorName}>{review.author_name}</Text>
+            <Text style={styles.timeText}>
+              {review.relative_time_description}
+            </Text>
+          </View>
+        </View>
+        <Rating
+          ratingCount={5}
+          startingValue={review.rating}
+          imageSize={18}
+          readonly
+          style={styles.rating}
+        />
+        <Text style={styles.reviewText}>{review.text}</Text>
+      </View>
+    ));
+  };
+
   return (
     <BottomSheet
       ref={sheetRef}
@@ -68,31 +96,7 @@ export const PlaceDetailsSection = ({ place }: PlaceDetailsSectionProps) => {
         {place?.reviews && place?.reviews?.length > 0 && (
           <View style={styles.reviewsContainer}>
             <Text style={styles.reviewHeading}>User Reviews</Text>
-            {place.reviews.slice(0, 5).map((review, index) => (
-              <View key={index} style={styles.reviewItem}>
-                <View style={styles.reviewHeader}>
-                  <Image
-                    source={{ uri: review.profile_photo_url }}
-                    style={styles.profilePhoto}
-                    resizeMode="contain"
-                  />
-                  <View style={styles.reviewInfo}>
-                    <Text style={styles.authorName}>{review.author_name}</Text>
-                    <Text style={styles.timeText}>
-                      {review.relative_time_description}
-                    </Text>
-                  </View>
-                </View>
-                <Rating
-                  ratingCount={5}
-                  startingValue={review.rating}
-                  imageSize={18}
-                  readonly
-                  style={{ alignSelf: 'flex-start' }}
-                />
-                <Text style={styles.reviewText}>{review.text}</Text>
-              </View>
-            ))}
+            {renderReiewList(place.reviews)}
           </View>
         )}
       </BottomSheetScrollView>
@@ -179,6 +183,9 @@ export const PlaceDetailsSectionStyles = ({}: Palette) =>
     timeText: {
       fontSize: 12,
       color: '#888',
+    },
+    rating: {
+      alignSelf: 'flex-start',
     },
     reviewText: {
       fontSize: 14,
